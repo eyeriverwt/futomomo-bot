@@ -25,7 +25,7 @@ client.on('message', async message => {
 	if (message.content.match(/おはゆ/)) {
         let channel = message.channel;
         let author = message.author.username;
-        let reply_text =`おはゆ！`;
+        let reply_text =`おはゆ！！`;
         
         // ---------------------
 		const req = https.request('https://rss-weather.yahoo.co.jp/rss/days/4410.xml', (res) => {
@@ -42,8 +42,8 @@ client.on('message', async message => {
 		req.end();
         // ---------------------
         
-        message.reply(reply_text)
-            .then(message => console.log(`Sent message: ${reply_text}`))
+        message.reply(chunk)
+            .then(message => console.log(`Sent message: ${chunk}`))
             .catch(console.error);
         return;
     }
