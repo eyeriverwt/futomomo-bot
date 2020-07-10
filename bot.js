@@ -13,49 +13,16 @@ client.on('ready', () => {
     console.log(`${client.user.username} でログインしています。`);
 });
 
-//Bot自身の発言を無視する呪い
-client.on('message', message =>{
-    if(message.author.bot){
-        return;
-   }
-})
-
-// メッセージがあったら何かをする
-/*
-client.on('message', message => {
-    // メッセージの文字列による条件分岐
-    if (message.content === 'こん') {
-
-        let channel = message.channel;
-        let author = message.author.username;
-        let reply_text = `こんばんわ。${author}様。`;
-
-        // そのチェンネルにメッセージを送信する
-        channel.reply(reply_text)
-            .then(message => console.log(`Sent message: ${reply_text}`))
-            .catch(console.error);
-        return;
-    }
-});
-*/
-/*
-client.on('message', async msg => {
-  if (msg.content === 'hello') {
-	let author = msg.author.username;
-	msg.channel.send('hello! ${author}!')
-  }
-})
-*/
-
 client.on('message', async message => {
+	//Bot自身の発言を無視
     if(message.author.bot){
         return;
    }
 
-	if (message.content.match(/おはよ/)) {
+	if (message.content.match(/おはゆ/)) {
         let channel = message.channel;
         let author = message.author.username;
-        let reply_text =`おはよ！`;
+        let reply_text =`おはゆ！`;
         message.reply(reply_text)
             .then(message => console.log(`Sent message: ${reply_text}`))
             .catch(console.error);
@@ -65,5 +32,6 @@ client.on('message', async message => {
 
 // Discordへの接続
 //client.login(token);
+// heroku config:set BOT_TOKEN=""
 client.login(process.env.BOT_TOKEN);
 
