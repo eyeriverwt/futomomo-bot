@@ -27,7 +27,7 @@ client.on('message', async message => {
         let author = message.author.username;
         let reply_text =`おはゆ！！`;
         
-        // ---------------------
+        /*
 		const req = https.request('https://rss-weather.yahoo.co.jp/rss/days/4410.xml', (res) => {
 		    res.on('data', (chunk) => {
 		        console.log(`BODY: ${chunk}`);
@@ -40,10 +40,10 @@ client.on('message', async message => {
 		  console.error(`エラーが出ました： ${e.message}`);
 		});
 		req.end();
-        // ---------------------
+        */
         
-        message.reply(chunk)
-            .then(message => console.log(`Sent message: ${chunk}`))
+        message.reply(reply_text)
+            .then(message => console.log(`Sent message: ${reply_text}`))
             .catch(console.error);
         return;
     }
@@ -54,4 +54,3 @@ client.on('message', async message => {
 // heroku config:set BOT_TOKEN=""
 client.login(process.env.BOT_TOKEN);
 
-//https://rss-weather.yahoo.co.jp/rss/days/4410.xml
