@@ -5,7 +5,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 // トークンの用意
-const token = 'NzMwOTUxNzU2NjkwNzUxNTE4.Xwe-KA.aEMoi1cas1PgFFZLHt2zWTNhXJs';// access token
+//const token = 'NzMwOTUxNzU2NjkwNzUxNTE4.Xwe-KA.aEMoi1cas1PgFFZLHt2zWTNhXJs';// access token
 
 // 準備完了イベントのconsole.logで通知黒い画面に出る。
 client.on('ready', () => {
@@ -64,4 +64,6 @@ client.on('message', async message => {
 })
 
 // Discordへの接続
-client.login(token);
+//client.login(token);
+client.login(process.env.BOT_TOKEN);
+
