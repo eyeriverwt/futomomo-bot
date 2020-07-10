@@ -4,6 +4,9 @@ const Discord = require('discord.js');
 // Discord Clientのインスタンス作成
 const client = new Discord.Client();
 
+// httpsでgetしてJSONパース
+const https = require('https');
+
 // トークンの用意
 //const token = 'NzMwOTUxNzU2NjkwNzUxNTE4.Xwe-KA.aEMoi1cas1PgFFZLHt2zWTNhXJs';// access token
 
@@ -23,6 +26,22 @@ client.on('message', async message => {
         let channel = message.channel;
         let author = message.author.username;
         let reply_text =`おはゆ！`;
+        
+        // ---------------------
+		const req = https.request('https://rss-weather.yahoo.co.jp/rss/days/4410.xml', (res) => {
+		    res.on('data', (chunk) => {
+		        console.log(`BODY: ${chunk}`);
+		    });
+		    res.on('end', () => {
+		        console.log('JSONデータは以上です。');
+		    });
+		})
+		req.on('error', (e) => {
+		  console.error(`エラーが出ました： ${e.message}`);
+		});
+		req.end();
+        // ---------------------
+        
         message.reply(reply_text)
             .then(message => console.log(`Sent message: ${reply_text}`))
             .catch(console.error);
@@ -35,3 +54,4 @@ client.on('message', async message => {
 // heroku config:set BOT_TOKEN=""
 client.login(process.env.BOT_TOKEN);
 
+//https://rss-weather.yahoo.co.jp/rss/days/4410.xml
