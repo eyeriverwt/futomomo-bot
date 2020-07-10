@@ -22,7 +22,7 @@ client.on('message', async message => {
         return;
    }
 
-	if (message.content.match(/おはゆ/)) {
+	if (message.content.match(/おは/)) {
         let channel = message.channel;
         let author = message.author.username;
         let reply_text =`おはゆ！！`;
