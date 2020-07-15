@@ -100,23 +100,23 @@ bot.on("presenceUpdate", (other, oldPresence) => {
 
     if (other.game) {// ゲームが始まった時
         const gameName = other.game.name;
-        bot.createMessage(textChannel.id, userName + "が" + gameName + "を始めました");
+        bot.createMessage(textChannel.id, userName + "ちゃんが" + gameName + "をSTART");
     } else if (oldPresence.game) {// ゲームを終了した時
         const gameName = oldPresence.game.name;
-        bot.createMessage(textChannel.id, userName + "が" + gameName + "を終了しました");
+        bot.createMessage(textChannel.id, userName + "ちゃんが" + gameName + "をSTOP");
     }
 });
 
 // ユーザが音声チャンネルに参加した時に発火
 bot.on("voiceChannelJoin", (member, newChannel) => {
     const textChannel = newChannel.guild.channels.find((channel) => channel.type === 0);
-    const msg = member.username + "が通話を始めました";
+    const msg = member.username + "ちゃんが通話START";
     bot.createMessage(textChannel.id, msg);
 });
 // ユーザが音声チャンネルから退出した時に発火
 bot.on("voiceChannelLeave", (member, oldChannel) => {
     const textChannel = oldChannel.guild.channels.find((channel) => channel.type === 0);
-    const msg = member.username + "が通話をやめました";
+    const msg = member.username + "ちゃんが通話STOP";
     bot.createMessage(textChannel.id, msg);
 });
 bot.connect();
