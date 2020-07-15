@@ -4,8 +4,8 @@ const Discord = require('discord.js');
 // Discord Clientのインスタンス作成
 const client = new Discord.Client();
 
-// httpsでgetしてJSONパース
-const https = require('https');
+// httpでgetしてJSONパース
+const http = require('http');
 
 // トークンの用意
 //const token = 'NzMwOTUxNzU2NjkwNzUxNTE4.Xwe-KA.aEMoi1cas1PgFFZLHt2zWTNhXJs';// access token
@@ -108,3 +108,28 @@ client.on('message', async message => {
 // heroku config:set BOT_TOKEN=""
 client.login(process.env.BOT_TOKEN);
 
+bot.on("presenceUpdate", (other, oldPresence) => {
+    const textChannel = other.guild.channels.find((channel) => channel.type === 0);
+    const userName = other.user.username;
+
+    if (other.game) {
+        const gameName = other.game.name;
+        bot.createMessage(textChannel.id, userName + "が" + gameName + "を始めました");
+    } else if (oldPresence.game) {
+        const gameName = oldPresence.game.name;
+        bot.createMessage(textChannel.id, userName + "が" + gameName + "を終了しました");
+    }
+});
+
+bot.on("voiceChannelJoin", (member, newChannel) => {
+    const textChannel = newChannel.guild.channels.find((channel) => channel.type === 0);
+    const msg = member.username + "が通話を始めました";
+    bot.createMessage(textChannel.id, msg);
+});
+
+bot.on("voiceChannelLeave", (member, oldChannel) => {
+    const textChannel = oldChannel.guild.channels.find((channel) => channel.type === 0);
+    const msg = member.username + "が通話をやめました";
+    bot.createMessage(textChannel.id, msg);
+});
+bot.connect();
