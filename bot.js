@@ -5,6 +5,9 @@ const client = new Discord.Client();
 // httpsでgetしてJSONパース
 const http = require('http');
 
+const Eris = require("eris");
+const bot = new Eris(process.env.BOT_TOKEN);// heroku config:set BOT_TOKEN=""
+
 // 準備完了イベント
 client.on('ready', () => {
     //console.log('ready...');
@@ -86,3 +89,34 @@ client.on('message', async message => {
 // heroku config:set BOT_TOKEN=""
 client.login(process.env.BOT_TOKEN);
 
+
+// ユーザまたはrelationshipのステータスが変更された時
+bot.on("presenceUpdate", (other, oldPresence) => {
+	// Botが投稿するためのTextChannelを取得
+	// TextChannelが１つの場合を想定しています。
+	// 複数ある場合はchannel.id等で判別できます。
+    const textChannel = other.guild.channels.find((channel) => channel.type === 0);
+    const userName = other.user.username;
+
+    if (other.game) {// ゲームが始まった時
+        const gameName = other.game.name;
+        bot.createMessage(textChannel.id, userName + "が" + gameName + "を始めました");
+    } else if (oldPresence.game) {// ゲームを終了した時
+        const gameName = oldPresence.game.name;
+        bot.createMessage(textChannel.id, userName + "が" + gameName + "を終了しました");
+    }
+});
+
+// ユーザが音声チャンネルに参加した時に発火
+bot.on("voiceChannelJoin", (member, newChannel) => {
+    const textChannel = newChannel.guild.channels.find((channel) => channel.type === 0);
+    const msg = member.username + "が通話を始めました";
+    bot.createMessage(textChannel.id, msg);
+});
+// ユーザが音声チャンネルから退出した時に発火
+bot.on("voiceChannelLeave", (member, oldChannel) => {
+    const textChannel = oldChannel.guild.channels.find((channel) => channel.type === 0);
+    const msg = member.username + "が通話をやめました";
+    bot.createMessage(textChannel.id, msg);
+});
+bot.connect();
