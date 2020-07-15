@@ -71,6 +71,26 @@ client.on('message', async message => {
 				var w_city  = res.location["city"];
 			    console.log(res.forecasts[0].image["url"]);
 				var w_image  = res.forecasts[0].image["url"];
+
+				const exampleEmbed = new Discord.MessageEmbed()
+					.setColor('#0099ff')
+					.setTitle('Some title')
+					.setURL('https://discord.js.org/')
+					.setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
+					.setDescription('Some description here')
+					.setThumbnail(w_image)
+					.addFields(
+						{ name: 'Regular field title', value: 'Some value here' },
+						{ name: '\u200B', value: '\u200B' },
+						{ name: 'Inline field title', value: 'Some value here', inline: true },
+						{ name: 'Inline field title', value: 'Some value here', inline: true },
+					)
+					.addField('Inline field title', 'Some value here', true)
+					.setImage(w_image)
+					.setTimestamp()
+					.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
+				message.channel.send(exampleEmbed);
+
 		         //メンションせず
 		        //画像付きにするには第二引数を設定する
 		        message.channel.send('今日の' + w_city + 'の天気は ' + w_telop  + ' だお', {files: [w_image]});
