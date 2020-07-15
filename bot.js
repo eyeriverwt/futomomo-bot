@@ -67,7 +67,7 @@ client.on('message', async message => {
 				body += chunk;
 			}).on("end",function(){
 				res = JSON.parse(body);
-			    console.log(res.forecasts);
+			    //console.log(res.forecasts);
 				var w_city  = res.location["city"];
 				var w_date_1  = res.forecasts[0].dateLabel;
 				var w_telop_1 = res.forecasts[0].telop;
@@ -81,7 +81,7 @@ client.on('message', async message => {
 
 				const exampleEmbed = new Discord.MessageEmbed()
 					.setColor('#0099ff')
-					.setTitle('Some title')
+					.setTitle(w_city + 'の天気')
 					.setURL('https://discord.js.org/')
 					.setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
 					.setDescription('Some description here')
@@ -100,7 +100,7 @@ client.on('message', async message => {
 
 		         //メンションせず
 		        //画像付きにするには第二引数を設定する
-		        message.channel.send('今日の' + w_city + 'の天気は ' + w_telop  + ' だお', {files: [w_image]});
+		        //message.channel.send('今日の' + w_city + 'の天気は ' + w_telop  + ' だお', {files: [w_image]});
 		        
 			});
 		}).on('error', function(e) {
