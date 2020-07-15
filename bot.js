@@ -28,8 +28,6 @@ client.on('message', async message => {
         let author = message.author.username;
         let reply_text =`おはゆ！！`;
  
-         //メンションせず
-        message.channel.send(`${author}ちゃん、おはよ！`)
        
         /*
 		const req = https.request('https://rss-weather.yahoo.co.jp/rss/days/4410.xml', (res) => {
@@ -51,6 +49,9 @@ client.on('message', async message => {
             .then(message => console.log(`Sent message: ${reply_text}`))
             .catch(console.error);
         return;
+
+         //メンションせず
+        message.channel.send(`${author}ちゃん、おはよ！`)
         
     }
     
