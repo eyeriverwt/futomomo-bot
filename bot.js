@@ -65,7 +65,7 @@ client.on('message', async message => {
 				console.log(res.location["city"]);
 				var telp = res.forecasts[0].telop;
 		         //メンションせず
-		        message.channel.send(telp)
+		        message.channel.send('今日の天気は' + telp + '！')
 			});
 		}).on('error', function(e) {
 			console.log(e.message);
