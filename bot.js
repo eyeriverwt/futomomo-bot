@@ -65,7 +65,7 @@ client.on('message', async message => {
 				console.log(res.location["city"]);
 				var telp = res.forecasts[0].telop;
 		         //メンションせず
-		        message.channel.send(`${author}ちゃん、${telp}！`)
+		        message.channel.send(telp)
 			});
 		}).on('error', function(e) {
 			console.log(e.message);
