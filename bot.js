@@ -74,19 +74,19 @@ client.on('message', async message => {
 
 				const exampleEmbed = new Discord.MessageEmbed()
 					.setColor('#0099ff')
-					.setTitle('今日の天気')
-					.setURL('http://weather.livedoor.com/forecast/webservice/json/v1?city=130010')
+					.setTitle('Some title')
+					.setURL('https://discord.js.org/')
 					.setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
-					.setDescription('weather.livedoor.com')
+					.setDescription('Some description here')
 					.setThumbnail(w_image)
 					.addFields(
-						//{ name: 'Regular field title', value: 'Some value here' },
+						{ name: 'Regular field title', value: 'Some value here' },
 						//{ name: '\u200B', value: '\u200B' },
 						{ name: 'Inline field title', value: 'Some value here', inline: true },
 						//{ name: 'Inline field title', value: 'Some value here', inline: true },
 					)
 					//.addField('Inline field title', 'Some value here', true)
-					//.setImage(w_image)
+					.setImage(w_image)
 					.setTimestamp()
 					.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
 				message.channel.send(exampleEmbed);
