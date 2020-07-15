@@ -57,6 +57,8 @@ client.on('message', async message => {
         //let URL = "http://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=" + APIKEY;
         let URL = "http://weather.livedoor.com/forecast/webservice/json/v1?city=130010";
 
+
+
 		http.get(URL, function(res) {
 			var body = '';
 			res.setEncoding('utf8');
@@ -66,7 +68,14 @@ client.on('message', async message => {
 			});
 			res.on('data', function(chunk) {
 				res = JSON.parse(body);
-				console.log(res);
+				//console.log(res);
+
+		        //reply_textを送信します
+		        message.reply(res)
+		        	//メッセージを送信したら送信したメッセージをターミナルにも表示します
+		            .then(message => console.log(`Sent message: ${res}`))
+		            .catch(console.error);
+		        return;
 			});
 		}).on('error', function(e) {
 			console.log(e.message);
