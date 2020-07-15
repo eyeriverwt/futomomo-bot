@@ -62,7 +62,7 @@ client.on('message', async message => {
 			}).on("end",function(){
 				res = JSON.parse(body);
 				var w_telop = res.forecasts[0].telop;
-				var w_city = rres.location["city"];
+				var w_city  = res.location["city"];
 		         //メンションせず
 		        message.channel.send('${author}ちゃん、今日の' + w_city + 'の天気は ' + w_telop + ' よ！')
 			});
