@@ -67,17 +67,10 @@ client.on('message', async message => {
 				body += chunk;
 			}).on("end",function(){
 				res = JSON.parse(body);
-			    console.log(res.forecasts);
+				var w_telop = res.forecasts[0].telop;
 				var w_city  = res.location["city"];
-				var w_date_1  = res.forecasts[0].dateLabel;
-				var w_telop_1 = res.forecasts[0].telop;
-				var w_image_1 = res.forecasts[0].image["url"];
-				var w_date_2  = res.forecasts[1].dateLabel;
-				var w_telop_2 = res.forecasts[1].telop;
-				var w_image_2 = res.forecasts[1].image["url"];
-				var w_date_3  = res.forecasts[2].dateLabel;
-				var w_telop_3 = res.forecasts[2].telop;
-				var w_image_3 = res.forecasts[2].image["url"];
+			    console.log(res.forecasts[0].image["url"]);
+				var w_image  = res.forecasts[0].image["url"];
 
 				const exampleEmbed = new Discord.MessageEmbed()
 					.setColor('#0099ff')
