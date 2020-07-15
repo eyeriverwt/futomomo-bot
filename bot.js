@@ -50,7 +50,28 @@ client.on('message', async message => {
         return;
     }
     
-    
+    // 天気
+    if (message.content.match(/天気/)) {
+        let location = "Tokyo";
+        let APIKEY = "Your apikey";
+        //let URL = "http://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=" + APIKEY;
+        let URL = "http://weather.livedoor.com/forecast/webservice/json/v1?city=130010";
+
+		http.get(URL, function(res) {
+			var body = '';
+			res.setEncoding('utf8');
+			
+			res.on('data', function(chunk) {
+				body += chunk;
+			});
+			res.on('data', function(chunk) {
+				res = JSON.parse(body);
+				console.log(res);
+			});
+		}).on('error', function(e) {
+			console.log(e.message);
+		});
+    }    
     
     
     
