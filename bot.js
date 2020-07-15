@@ -82,20 +82,21 @@ client.on('message', async message => {
 				const exampleEmbed = new Discord.MessageEmbed()
 					.setColor('#0099ff')
 					.setTitle(w_city + 'の天気')
-					.setURL('https://discord.js.org/')
-					.setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
-					.setDescription('Some description here')
+					.setURL('http://weather.livedoor.com/forecast/webservice/json/v1?city=130010')
+					.setAuthor('discord.js', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
+					.setDescription('weather.livedoor.com')
 					.setThumbnail(w_image_1)
 					.addFields(
 						{ name: 'Regular field title', value: 'Some value here' },
 						//{ name: '\u200B', value: '\u200B' },
 						{ name: w_date_1, value: w_telop_1, inline: true },
-						{ name: 'Inline field title', value: 'Some value here', inline: true },
+						{ name: w_date_2, value: w_telop_2, inline: true },
+						{ name: w_date_3, value: w_telop_3, inline: true },
 					)
-					.addField('Inline field title', 'Some value here', true)
-					.setImage(w_image_1)
+					//.addField('Inline field title', 'Some value here', true)
+					//.setImage(w_image_1)
 					.setTimestamp()
-					.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
+					.setFooter('', 'https://i.imgur.com/wSTFkRM.png');
 				message.channel.send(exampleEmbed);
 
 		         //メンションせず
