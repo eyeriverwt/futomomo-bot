@@ -78,10 +78,11 @@ client.on('message', async message => {
 				res = JSON.parse(body);
 				//console.log(res);
 
+		        let reply_text =`いいね！！`;
 		        //reply_textを送信します
-		        message.reply(res)
+		        message.reply(reply_text)
 		        	//メッセージを送信したら送信したメッセージをターミナルにも表示します
-		            .then(message => console.log(`Sent message: ${res}`))
+		            .then(message => console.log(`Sent message: ${reply_text}`))
 		            .catch(console.error);
 		        return;
 			});
