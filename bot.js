@@ -67,7 +67,7 @@ client.on('message', async message => {
 				body += chunk;
 			}).on("end",function(){
 				res = JSON.parse(body);
-			    //console.log(res.forecasts[0].image["url"]);
+			    console.log(res.forecasts);
 				var w_city  = res.location["city"];
 				var w_date_1  = res.forecasts[0].dateLabel;
 				var w_telop_1 = res.forecasts[0].telop;
@@ -81,7 +81,7 @@ client.on('message', async message => {
 
 				const exampleEmbed = new Discord.MessageEmbed()
 					.setColor('#0099ff')
-					.setTitle( w_city +'の天気')
+					.setTitle('今日の天気')
 					.setURL('http://weather.livedoor.com/forecast/webservice/json/v1?city=130010')
 					.setAuthor('discord.js', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
 					.setDescription('weather.livedoor.com')
@@ -89,11 +89,11 @@ client.on('message', async message => {
 					.addFields(
 						//{ name: 'Regular field title', value: 'Some value here' },
 						//{ name: '\u200B', value: '\u200B' },
-						{ name: w_date_2, value: w_telop_2, inline: true },
-						{ name: w_date_3, value: w_telop_3, inline: true },
+						{ name: w_telop_2, value: 'Some value here', inline: true },
+						//{ name: 'Inline field title', value: 'Some value here', inline: true },
 					)
 					//.addField('Inline field title', 'Some value here', true)
-					//.setImage(w_image)
+					.setImage(w_image)
 					.setTimestamp()
 					//.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
 				message.channel.send(exampleEmbed);
