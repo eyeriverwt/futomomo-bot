@@ -36,14 +36,18 @@ client.on('message', async message => {
 		});
 		req.end();
         */
+ 
+          //メンションせず
+        message.channel.send(`${author}ちゃん、おはゆ！`)
+
+ 		/*
         //reply_textを送信します
         message.reply(reply_text)
         	//メッセージを送信したら送信したメッセージをターミナルにも表示します
             .then(message => console.log(`Sent message: ${reply_text}`))
             .catch(console.error);
         return;
-         //メンションせず
-        message.channel.send(`${author}ちゃん、おはよ！`)
+        */
     }
     
     // 天気
@@ -64,8 +68,10 @@ client.on('message', async message => {
 				res = JSON.parse(body);
 				var w_telop = res.forecasts[0].telop;
 				var w_city  = res.location["city"];
+			    console.log(res.forecasts[0].image["url"]);
+				var w_image  = res.forecasts[0].image["url"];
 		         //メンションせず
-		        message.channel.send('${author}ちゃん、今日の' + w_city + 'の天気は ' + w_telop + ' よ！')
+		        message.channel.send('今日の' + w_city + 'の天気は ' + w_telop  + w_image + ' よ！')
 			});
 		}).on('error', function(e) {
 			console.log(e.message);
