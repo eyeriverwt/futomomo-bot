@@ -89,7 +89,7 @@ client.on('message', async message => {
 					.addFields(
 						//{ name: 'Regular field title', value: 'Some value here' },
 						//{ name: '\u200B', value: '\u200B' },
-						{ name: w_telop_2, value: 'Some value here', inline: true },
+						{ name: 'Inline field title', value: 'Some value here', inline: true },
 						//{ name: 'Inline field title', value: 'Some value here', inline: true },
 					)
 					//.addField('Inline field title', 'Some value here', true)
