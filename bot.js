@@ -83,9 +83,9 @@ client.on('message', async message => {
 						{ name: 'Regular field title', value: 'Some value here' },
 						//{ name: '\u200B', value: '\u200B' },
 						{ name: 'Inline field title', value: 'Some value here', inline: true },
-						//{ name: 'Inline field title', value: 'Some value here', inline: true },
+						{ name: 'Inline field title', value: 'Some value here', inline: true },
 					)
-					//.addField('Inline field title', 'Some value here', true)
+					.addField('Inline field title', 'Some value here', true)
 					.setImage(w_image)
 					.setTimestamp()
 					.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
