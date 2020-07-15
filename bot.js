@@ -7,6 +7,7 @@ const client = new Discord.Client();
 // httpsでgetしてJSONパース
 const http = require('http');
 
+
 // トークンの用意
 //const token = 'NzMwOTUxNzU2NjkwNzUxNTE4.Xwe-KA.aEMoi1cas1PgFFZLHt2zWTNhXJs';// access token
 
@@ -28,8 +29,7 @@ client.on('message', async message => {
         let author = message.author.username;
         let reply_text =`おはゆ！！`;
         
-        /*
-		const req = https.request('https://rss-weather.yahoo.co.jp/rss/days/4410.xml', (res) => {
+		const req = http.request('http://weather.livedoor.com/forecast/webservice/json/v1?city=130010', (res) => {
 		    res.on('data', (chunk) => {
 		        console.log(`BODY: ${chunk}`);
 		    });
@@ -41,6 +41,7 @@ client.on('message', async message => {
 		  console.error(`エラーが出ました： ${e.message}`);
 		});
 		req.end();
+        /*
         */
         //reply_textを送信します
         message.reply(reply_text)
