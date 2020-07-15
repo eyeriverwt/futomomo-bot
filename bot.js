@@ -41,7 +41,7 @@ client.on('message', async message => {
 		let reply_text =`おはゆ！！`;
 
 		//メンションせず
-		message.channel.send(`${author}ちゃん、おはゆ！:thumbsup:`);
+		message.channel.send(`${author}ちゃん、おはゆ！:hatching_chick:`);
  
  		/*
         //reply_textを送信します
