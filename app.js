@@ -9,6 +9,49 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+const http = require('http');
+
+//const https = require ('https');
+
+console.log(`ready.....`);
+
+let URL = "http://weather.livedoor.com/forecast/webservice/json/v1?city=130010";
+/*
+http.get("http://weather.livedoor.com/forecast/webservice/json/v1?city=130010", function(res) {
+	let x="";
+	res.setEncoding('utf8');
+	res.on("data", function(chunk) {
+		x+=chunk;
+	}).on("end",function(){
+		console.log(JSON.parse(x));
+	});
+});
+*/
+http.get(URL, function(res) {
+	var body = '';
+	res.setEncoding('utf8');
+	
+	res.on('data', function(chunk) {
+		body += chunk;
+	}).on("end",function(){
+		res = JSON.parse(body);
+		console.log(res.forecasts[0].telop);
+		console.log(res.location["city"]);
+	});
+}).on('error', function(e) {
+	console.log(e.message);
+});
+
+
+
+
+
+
+
+
+
+
+/*
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -39,3 +82,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+*/
