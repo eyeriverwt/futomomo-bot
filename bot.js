@@ -58,6 +58,14 @@ client.on('message', async message => {
         let URL = "http://weather.livedoor.com/forecast/webservice/json/v1?city=130010";
 
 
+        let reply_text =`いいね！！`;
+        //reply_textを送信します
+        message.reply(reply_text)
+        	//メッセージを送信したら送信したメッセージをターミナルにも表示します
+            .then(message => console.log(`Sent message: ${reply_text}`))
+            .catch(console.error);
+        return;
+
 
 		http.get(URL, function(res) {
 			var body = '';
