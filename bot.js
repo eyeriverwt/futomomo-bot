@@ -9,6 +9,21 @@ const http = require('http');
 client.on('ready', () => {
     //console.log('ready...');
     console.log(`${client.user.username} でログインしています。`);
+    
+    // ステータスに ゲームをプレイ中 を表示
+    // setGameメソッドは廃止されました。
+    client.user.setActivity('ゲーム', {
+        type: 'PLAYING'
+        /*
+        typeの値:
+            https://discord.js.org/#/docs/main/stable/class/ClientUser?scrollTo=setActivity
+                'PLAYING': 〇〇 をプレイ中
+                'STREAMING': 〇〇 を配信中
+                'WATCHING': 〇〇 を視聴中
+                'LISTENING': 〇〇 を再生中
+        */
+    });    
+    
 });
 
 client.on('message', async message => {
