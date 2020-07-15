@@ -58,7 +58,7 @@ client.on('message', async message => {
 //client.login(token);
 // heroku config:set BOT_TOKEN=""
 client.login(process.env.BOT_TOKEN);
-
+/*
 bot.on("presenceUpdate", (other, oldPresence) => {
     const textChannel = other.guild.channels.find((channel) => channel.type === 0);
     const userName = other.user.username;
@@ -84,3 +84,4 @@ bot.on("voiceChannelLeave", (member, oldChannel) => {
     bot.createMessage(textChannel.id, msg);
 });
 bot.connect();
+*/
