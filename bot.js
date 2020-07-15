@@ -48,6 +48,7 @@ client.on('message', async message => {
     
     // 天気
     if (message.content.match(/天気/)) {
+        let author = message.author.username;
         let location = "Tokyo";
         let APIKEY = "Your apikey";
         //let URL = "http://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=" + APIKEY;
