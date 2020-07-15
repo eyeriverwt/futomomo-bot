@@ -38,7 +38,7 @@ client.on('message', async message => {
         */
  
           //メンションせず
-        message.channel.send(`${author}ちゃん、おはゆ！`)
+        message.channel.send(`${author}ちゃん、おはゆ！`);
 
  		/*
         //reply_textを送信します
@@ -71,7 +71,11 @@ client.on('message', async message => {
 			    console.log(res.forecasts[0].image["url"]);
 				var w_image  = res.forecasts[0].image["url"];
 		         //メンションせず
-		        message.channel.send('今日の' + w_city + 'の天気は ' + w_telop  + w_image + ' よ！')
+		        //message.channel.send('今日の' + w_city + 'の天気は ' + w_telop  + w_image + ' よ！');
+		        
+		        //画像付きにするには第二引数を設定する
+				message.reply('今日の' + w_city + 'の天気は ' + w_telop  + ' よ！',{files: [{ attachment: "", name: w_image }]});
+		        
 			});
 		}).on('error', function(e) {
 			console.log(e.message);
