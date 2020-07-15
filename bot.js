@@ -12,7 +12,7 @@ client.on('ready', () => {
     
     // ステータスに ゲームをプレイ中 を表示
     // setGameメソッドは廃止されました。
-    client.user.setActivity('ゲーム', {
+    client.user.setActivity('モンスターハンターワールド：アイスボーン', {
         type: 'PLAYING'
         /*
         typeの値:
@@ -87,9 +87,8 @@ client.on('message', async message => {
 				var w_image  = res.forecasts[0].image["url"];
 		         //メンションせず
 		        //message.channel.send('今日の' + w_city + 'の天気は ' + w_telop  + w_image + ' よ！');
-		        
 		        //画像付きにするには第二引数を設定する
-				message.reply('今日の' + w_city + 'の天気は ' + w_telop  + ' よ！',{files: [{ attachment: "", name: w_image }]});
+		        message.channel.send('今日の' + w_city + 'の天気は ' + w_telop  + ' よ！', {files: [w_image]});
 		        
 			});
 		}).on('error', function(e) {
