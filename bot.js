@@ -61,11 +61,10 @@ client.on('message', async message => {
 				body += chunk;
 			}).on("end",function(){
 				res = JSON.parse(body);
-				console.log(res.forecasts[0].telop);
-				console.log(res.location["city"]);
-				var telp = res.forecasts[0].telop;
+				var w_telop = res.forecasts[0].telop;
+				var w_city = rres.location["city"];
 		         //メンションせず
-		        message.channel.send('今日の天気は' + telp + '！')
+		        message.channel.send('${author}ちゃん、今日の' + w_city + 'の天気は ' + w_telop + ' よ！')
 			});
 		}).on('error', function(e) {
 			console.log(e.message);
