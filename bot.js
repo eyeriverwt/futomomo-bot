@@ -5,7 +5,7 @@ const client = new Discord.Client();
 // httpsでgetしてJSONパース
 const http = require('http');
 
-// 準備完了イベントのconsole.logで通知黒い画面に出る。
+// 準備完了イベント
 client.on('ready', () => {
     //console.log('ready...');
     console.log(`${client.user.username} でログインしています。`);
@@ -31,30 +31,15 @@ client.on('message', async message => {
     if(message.author.bot){
         return;
 	}
-
 	if (message.content.match(/おは/)) {
 		//メッセージを送るチャンネルを判断します
-        let channel = message.channel;
-        let author = message.author.username;
-        let reply_text =`おはゆ！！`;
-        /*
-		const req = https.request('https://rss-weather.yahoo.co.jp/rss/days/4410.xml', (res) => {
-		    res.on('data', (chunk) => {
-		        console.log(`BODY: ${chunk}`);
-		    });
-		    res.on('end', () => {
-		        console.log('JSONデータは以上です。');
-		    });
-		})
-		req.on('error', (e) => {
-		  console.error(`エラーが出ました： ${e.message}`);
-		});
-		req.end();
-        */
- 
-          //メンションせず
-        message.channel.send(`${author}ちゃん、おはゆ！`);
+		let channel = message.channel;
+		let author = message.author.username;
+		let reply_text =`おはゆ！！`;
 
+		//メンションせず
+		message.channel.send(`${author}ちゃん、おはゆ！`);
+ 
  		/*
         //reply_textを送信します
         message.reply(reply_text)
@@ -69,8 +54,6 @@ client.on('message', async message => {
     if (message.content.match(/天気/)) {
         let author = message.author.username;
         let location = "Tokyo";
-        let APIKEY = "Your apikey";
-        //let URL = "http://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=" + APIKEY;
         let URL = "http://weather.livedoor.com/forecast/webservice/json/v1?city=130010";
 
 		http.get(URL, function(res) {
@@ -86,9 +69,8 @@ client.on('message', async message => {
 			    console.log(res.forecasts[0].image["url"]);
 				var w_image  = res.forecasts[0].image["url"];
 		         //メンションせず
-		        //message.channel.send('今日の' + w_city + 'の天気は ' + w_telop  + w_image + ' よ！');
 		        //画像付きにするには第二引数を設定する
-		        message.channel.send('今日の' + w_city + 'の天気は ' + w_telop  + ' よ！', {files: [w_image]});
+		        message.channel.send('今日の' + w_city + 'の天気は ' + w_telop  + ' だお', {files: [w_image]});
 		        
 			});
 		}).on('error', function(e) {
