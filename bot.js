@@ -12,8 +12,8 @@ client.on('ready', () => {
     
     // ステータスに ゲームをプレイ中 を表示
     // setGameメソッドは廃止されました。
-    client.user.setActivity('モンスターハンターワールド：アイスボーン', {
-        type: 'PLAYING'
+    client.user.setActivity('Netflix', {
+        type: 'WATCHING'
         /*
         typeの値:
             https://discord.js.org/#/docs/main/stable/class/ClientUser?scrollTo=setActivity
