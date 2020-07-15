@@ -81,13 +81,13 @@ client.on('message', async message => {
 
 				const exampleEmbed = new Discord.MessageEmbed()
 					.setColor('#0099ff')
-					.setTitle(w_city + 'の天気')
+					.setTitle('今日の天気（' + w_city + '）')
 					.setURL('http://weather.livedoor.com/forecast/webservice/json/v1?city=130010')
 					.setAuthor('discord.js', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
 					.setDescription('weather.livedoor.com')
 					.setThumbnail(w_image_1)
 					.addFields(
-						{ name: 'Regular field title', value: 'Some value here' },
+						//{ name: 'Regular field title', value: 'Some value here' },
 						//{ name: '\u200B', value: '\u200B' },
 						{ name: w_date_1, value: w_telop_1, inline: true },
 						{ name: w_date_2, value: w_telop_2, inline: true },
