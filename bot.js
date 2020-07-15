@@ -52,39 +52,48 @@ client.on('message', async message => {
     
     // 天気
     if (message.content.match(/天気/)) {
-        let location = "Tokyo";
+        let location = "Nagano";
         let APIKEY = "Your apikey";
-        //let URL = "http://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=" + APIKEY;
-        let URL = "http://weather.livedoor.com/forecast/webservice/json/v1?city=130010";
+        let URL = "http://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=" + APIKEY;
 
-		/*
-        let reply_text =`いいね！！`;
-        //reply_textを送信します
-        message.reply(reply_text)
-        	//メッセージを送信したら送信したメッセージをターミナルにも表示します
-            .then(message => console.log(`Sent message: ${reply_text}`))
-            .catch(console.error);
-        return;
-		*/
+        http.get(URL, (res) => {
+            let body = "";
+            res.setEncoding("utf8");
 
-		http.get(URL, function(res) {
-			var body = '';
-			res.setEncoding('utf8');
+            res.on("data", (chunk) => {
+                body += chunk;
+            });
+
+            res.on("end", (res) => {
+                res = JSON.parse(body);
+                console.log(res);
+                let channel = message.channel;
+                let temp = res.main.temp - 273;
+                message.channel.send({
+                    embed: {
+                        color: 3447003,
+                        author: {
+                            name: 'OpenWeatherMap',
+                            icon_url: 'https://png.icons8.com/dusk/64/summer.png',
+                        },
+                        title: '長野のお天気情報',
+                        url: 'https://openweathermap.org',
+                        description: 'OpenWeatherMapのAPI叩いたデータです。',
+                        fields: [
+                            { name: '天気', value: res.weather[0].main },
+                            { name: '気温', value: temp.toFixed(2) + '°C' },
+                            { name: '風力', value: res.wind.speed + 'm' },
+                            { name: '雲量', value: res.clouds.all + '%' },
+                        ],
+                        timestamp: new Date(),
+                        footer: {
+                            icon_url: 'http://openweathermap.org/img/w/' + res.weather[0].icon.replace('n', 'd') + '.png',
+                            text: 'OverWatchから逃げるな！私ですか？逃げました',
+                        },
+                    }
+                })
+            });
 			
-			res.on('data', function(chunk) {
-				body += chunk;
-			});
-			res.on('data', function(chunk) {
-				res = JSON.parse(body);
-				//console.log(res);
-
-		        //reply_textを送信します
-		        message.reply(res)
-		        	//メッセージを送信したら送信したメッセージをターミナルにも表示します
-		            .then(message => console.log(`Sent message: ${res}`))
-		            .catch(console.error);
-		        return;
-			});
 		}).on('error', function(e) {
 			console.log(e.message);
 		});
