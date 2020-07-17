@@ -75,9 +75,6 @@ client.on('message', async message => {
 				var w_date_2  = res.forecasts[1].dateLabel;
 				var w_telop_2 = res.forecasts[1].telop;
 				var w_image_2 = res.forecasts[1].image["url"];
-				var w_date_3  = res.forecasts[2].dateLabel;
-				var w_telop_3 = res.forecasts[2].telop;
-				var w_image_3 = res.forecasts[2].image["url"];
 
 				const exampleEmbed = new Discord.MessageEmbed()
 					.setColor('#0099ff')
@@ -91,7 +88,6 @@ client.on('message', async message => {
 						//{ name: '\u200B', value: '\u200B' },
 						{ name: w_date_1, value: w_telop_1, inline: true },
 						{ name: w_date_2, value: w_telop_2, inline: true },
-						{ name: w_date_3, value: w_telop_3, inline: true },
 					)
 					//.addField('Inline field title', 'Some value here', true)
 					//.setImage(w_image_1)
