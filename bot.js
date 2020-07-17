@@ -94,10 +94,9 @@ client.on('message', async message => {
 					.setTimestamp()
 					.setFooter('', 'https://i.imgur.com/wSTFkRM.png');
 				message.channel.send(exampleEmbed);
-
-		         //メンションせず
-		        //画像付きにするには第二引数を設定する
-		        //message.channel.send('今日の' + w_city + 'の天気は ' + w_telop  + ' だお', {files: [w_image]});
+				//メンションせず
+				//画像付きにするには第二引数を設定する
+				//message.channel.send('今日の' + w_city + 'の天気は ' + w_telop  + ' だお', {files: [w_image]});
 		        
 			});
 		}).on('error', function(e) {
