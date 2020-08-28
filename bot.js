@@ -110,7 +110,6 @@ client.on('message', async message => {
 // heroku config:set BOT_TOKEN=""
 client.login(process.env.BOT_TOKEN);
 
-
 // ユーザまたはrelationshipのステータスが変更された時
 bot.on("presenceUpdate", (other, oldPresence) => {
 	// Botが投稿するためのTextChannelを取得
