@@ -54,10 +54,15 @@ client.on('message', async message => {
     }
     
     // 天気
+	//2020年7月31日（金）14:00 をもちまして、「livedoor 天気」のサービス提供を終了
     if (message.content.match(/天気/)) {
         let author = message.author.username;
-        let URL = "http://weather.livedoor.com/forecast/webservice/json/v1?city=130010";
-
+        //let URL = "http://weather.livedoor.com/forecast/webservice/json/v1?city=130010";
+        let URL = "https://api.openweathermap.org/data/2.5/onecall?lat=35.681236&lon=139.767125&units=metric&lang=ja&appid=3cd22f47dde725397cec13cccb733a99";
+		//curl "https://api.openweathermap.org/data/2.5/onecall?lat=35.681236&lon=139.767125&units=metric&lang=ja&appid={YOUR API KEY}"
+		
+		
+		
 		http.get(URL, function(res) {
 			var body = '';
 			res.setEncoding('utf8');
@@ -68,7 +73,8 @@ client.on('message', async message => {
 
 			res.on('end', function(res) {
 				res = JSON.parse(body);
-			    console.log(res.forecasts);
+			    console.log(res);
+			    /*
 				var w_city  = res.location["city"];
 				var w_date_1  = res.forecasts[0].dateLabel;
 				var w_telop_1 = res.forecasts[0].telop;
@@ -98,7 +104,7 @@ client.on('message', async message => {
 				//メンションせず
 				//画像付きにするには第二引数を設定する
 				//message.channel.send('今日の' + w_city + 'の天気は ' + w_telop  + ' だお', {files: [w_image]});
-		        
+		        */
 			});
 		
 		}).on('error', function(e) {
