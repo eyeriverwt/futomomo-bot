@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 // httpsでgetしてJSONパース
 const http = require('http');
+const https = require('https');
 
 const Eris = require("eris");
 const bot = new Eris(process.env.BOT_TOKEN);// heroku config:set BOT_TOKEN=""
@@ -63,7 +64,7 @@ client.on('message', async message => {
 		
 		
 		
-		http.get(URL, function(res) {
+		https.get(URL, function(res) {
 			var body = '';
 			res.setEncoding('utf8');
 			
