@@ -68,7 +68,7 @@ client.on('message', async message => {
 
 			res.on('end', function(res) {
 				res = JSON.parse(body);
-			    //console.log(res.forecasts);
+			    console.log(res.forecasts);
 				var w_city  = res.location["city"];
 				var w_date_1  = res.forecasts[0].dateLabel;
 				var w_telop_1 = res.forecasts[0].telop;
