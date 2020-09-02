@@ -59,7 +59,7 @@ client.on('message', async message => {
     if (message.content.match(/天気/)) {
         let author = message.author.username;
         //let URL = "http://weather.livedoor.com/forecast/webservice/json/v1?city=130010";
-        let URL = "https://api.openweathermap.org/data/2.5/onecall?lat=35.681236&lon=139.767125&units=metric&lang=ja&appid=3cd22f47dde725397cec13cccb733a99";
+        //let URL = "https://api.openweathermap.org/data/2.5/onecall?lat=35.681236&lon=139.767125&units=metric&lang=ja&appid=";
 		//curl "https://api.openweathermap.org/data/2.5/onecall?lat=35.681236&lon=139.767125&units=metric&lang=ja&appid={YOUR API KEY}"
 		
 		
@@ -106,6 +106,7 @@ client.on('message', async message => {
 				//画像付きにするには第二引数を設定する
 				//message.channel.send('今日の' + w_city + 'の天気は ' + w_telop  + ' だお', {files: [w_image]});
 		        */
+		        message.channel.send('わかんないです');
 			});
 		
 		}).on('error', function(e) {
