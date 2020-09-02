@@ -61,9 +61,12 @@ client.on('message', async message => {
 		http.get(URL, function(res) {
 			var body = '';
 			res.setEncoding('utf8');
+			
 			res.on('data', function(chunk) {
 				body += chunk;
-			}).on("end",function(){
+			});
+
+			res.on('end', function(res) {
 				res = JSON.parse(body);
 			    //console.log(res.forecasts);
 				var w_city  = res.location["city"];
@@ -97,6 +100,7 @@ client.on('message', async message => {
 				//message.channel.send('今日の' + w_city + 'の天気は ' + w_telop  + ' だお', {files: [w_image]});
 		        
 			});
+		
 		}).on('error', function(e) {
 			console.log(e.message);
 		});
