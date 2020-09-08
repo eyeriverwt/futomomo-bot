@@ -55,14 +55,14 @@ client.on('message', async message => {
     }
 	
 	// ツェラーの公式
-	if (message.content.match(/^[0-9]{4}\/[0-9]{2}\/[0-9]{2}$/)) {
+	if (message.content.match(/^[0-9]{4}\/[0-9]{2}\/[0-9]{2}$/)) {//[yyyy/mm/dd]にマッチ
 		//メッセージを送るチャンネルを判断します
 		let channel = message.channel;
 		let author = message.author.username;
-		let reply_text =`10`;
+		let reply_text = message.content;
 
 		//メンションせず
-		message.channel.send(`${author}ちゃん、Zeller:hatching_chick:`);
+		message.channel.send(`${author}ちゃん、${reply_text} Zeller:hatching_chick:`);
     }
 
     
