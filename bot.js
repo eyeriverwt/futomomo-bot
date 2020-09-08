@@ -59,10 +59,14 @@ client.on('message', async message => {
 		//メッセージを送るチャンネルを判断します
 		let channel = message.channel;
 		let author = message.author.username;
-		let reply_text = message.content;
+		var reply_text = message.content;
+		//format_str = 'YYYY-MM-DD hh:mm:ss';
+		//format_str = format_str.replace(/YYYY/g, year_str);
+		
+		result = reply_text.match( /(.*)\/(.*)\/(.*)/ );//「/」区切りの数字を取り出す result[0]は全ての文字列
 
 		//メンションせず
-		message.channel.send(`${author}ちゃん、${reply_text} Zeller:hatching_chick:`);
+		message.channel.send(`${author}ちゃん、${result[1]} ${result[3]} ${result[2]} Zeller:hatching_chick:`);
     }
 
     
