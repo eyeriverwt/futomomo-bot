@@ -62,7 +62,7 @@ client.on('message', async message => {
 		let reply_text =`2020/09/08`;
 
 		//メンションせず
-		message.channel.send(`${author}ちゃん、${reply_text}:hatching_chick:`);
+		message.channel.send(`${author}ちゃん、Zeller:hatching_chick:`);
     }
 
     
