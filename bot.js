@@ -59,7 +59,7 @@ client.on('message', async message => {
 		//メッセージを送るチャンネルを判断します
 		let channel = message.channel;
 		let author = message.author.username;
-		let reply_text =`2020/09/08`;
+		let reply_text =`10`;
 
 		//メンションせず
 		message.channel.send(`${author}ちゃん、Zeller:hatching_chick:`);
