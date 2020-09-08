@@ -53,6 +53,18 @@ client.on('message', async message => {
         return;
         */
     }
+	
+	// ツェラーの公式
+	if (message.content.match(/^[0-9]{2}:[0-9]{2}$/)) {
+		//メッセージを送るチャンネルを判断します
+		let channel = message.channel;
+		let author = message.author.username;
+		let reply_text =`2020/09/08`;
+
+		//メンションせず
+		message.channel.send(`${author}ちゃん、${reply_text}:hatching_chick:`);
+    }
+
     
     // 天気
 	//2020年7月31日（金）14:00 をもちまして、「livedoor 天気」のサービス提供を終了
