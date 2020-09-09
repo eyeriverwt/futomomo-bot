@@ -60,6 +60,7 @@ client.on('message', async message => {
 	0ならば日曜、1ならば月曜、・・・、6ならば土曜。
 	ただし、1月、2月は前年の13月、14月として計算する。
 	//String[] dayString = { "日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日" };dayOfTheWeek[7]
+	1582/10/15(金)以降に対応
 	*/
 	if (message.content.match(/^[0-9]{4}\/[0-9]{2}\/[0-9]{2}$/)) {//[yyyy/mm/dd]にマッチ
 		//メッセージを送るチャンネルを判断します
@@ -85,6 +86,7 @@ client.on('message', async message => {
 		//メンションせず
 		message.channel.send(`${result[1]}/${result[2]}/${result[3]} は ${dayOfTheWeek[day]}:turtle:`);
     }
+
 
     
     // 天気
