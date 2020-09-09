@@ -42,7 +42,7 @@ client.on('message', async message => {
 		let reply_text =`おはゆ！！`;
 
 		//メンションせず
-		message.channel.send(`${author}ちゃん、おはゆ！:octocat:`);
+		message.channel.send(`${author}ちゃん、おはゆ！:hatching_chick:`);
  
  		/*
         //reply_textを送信します
@@ -83,7 +83,7 @@ client.on('message', async message => {
 		var dayOfTheWeek = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"];
 
 		//メンションせず
-		message.channel.send(`${result[1]}/${result[2]}/${result[3]} は ${dayOfTheWeek[day]}:hatching_chick:`);
+		message.channel.send(`${result[1]}/${result[2]}/${result[3]} は ${dayOfTheWeek[day]}:turtle:`);
     }
 
     
