@@ -83,7 +83,7 @@ client.on('message', async message => {
 		var dayOfTheWeek = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"];
 
 		//メンションせず
-		message.channel.send(`${result[1]}/${result[2]}/${result[3]} は ${dayOfTheWeek[day]} 曜日:rabbit: 「Zeller」`);
+		message.channel.send(`${result[1]}/${result[2]}/${result[3]} は ${dayOfTheWeek[day]}:rabbit: [Zeller]`);
     }
 
     
