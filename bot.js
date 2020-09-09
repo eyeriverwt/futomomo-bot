@@ -42,7 +42,7 @@ client.on('message', async message => {
 		let reply_text =`おはゆ！！`;
 
 		//メンションせず
-		message.channel.send(`${author}ちゃん、おはゆ！:hatching_chick:`);
+		message.channel.send(`${author}ちゃん、おはゆ！:octocat:`);
  
  		/*
         //reply_textを送信します
@@ -54,7 +54,7 @@ client.on('message', async message => {
         */
     }
 	
-	// ツェラーの公式
+	// ツェラーの公式 [Zeller]
 	/*
 	年 + 年/4 - 年/100 + 年/400 + (13*月+8)/5 + 日 を7で割ったときのあまりが、
 	0ならば日曜、1ならば月曜、・・・、6ならば土曜。
@@ -83,7 +83,7 @@ client.on('message', async message => {
 		var dayOfTheWeek = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"];
 
 		//メンションせず
-		message.channel.send(`${result[1]}/${result[2]}/${result[3]} は ${dayOfTheWeek[day]}:rabbit: [Zeller]`);
+		message.channel.send(`${result[1]}/${result[2]}/${result[3]} は ${dayOfTheWeek[day]}:hatching_chick:`);
     }
 
     
