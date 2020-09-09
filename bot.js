@@ -79,11 +79,11 @@ client.on('message', async message => {
 		
 		//$day = ($year + $year / 4 - $year / 100 + $year / 400 + (13 * $month + 8)/ 5 + $date) % 7;
 		let day = Math.floor( year + Math.floor(year/4) - Math.floor(year/100) + Math.floor(year/400) + Math.floor((13 * month + 8)/5) + date ) % 7;
+		
+		var dayOfTheWeek = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"];
 
 		//メンションせず
-		message.channel.send(`${author}ちゃん、${result[1]}/${result[2]}/${result[3]} Zeller:hatching_chick:`);
-		message.channel.send(`${author}ちゃん、${year}/${month}/${date} Zeller:hatching_chick:`);
-		message.channel.send(`${author}ちゃん、${day} 曜日`);
+		message.channel.send(`${result[1]}/${result[2]}/${result[3]} は ${dayOfTheWeek[day]} 曜日:rabbit: 「Zeller」`);
     }
 
     
