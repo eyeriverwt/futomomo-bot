@@ -78,7 +78,7 @@ client.on('message', async message => {
 		}
 		
 		//$day = ($year + $year / 4 - $year / 100 + $year / 400 + (13 * $month + 8)/ 5 + $date) % 7;
-		let day = (year + (year/4)) - (year/100) - (year/400) + ((13 * month + 8)/5) + date) % 7;
+		let day = ( year + (year/4) - (year/100) + (year/400) + ((13 * month + 8)/5) + date ) % 7;
 
 		//メンションせず
 		message.channel.send(`${author}ちゃん、${result[1]}/${result[2]}/${result[3]} Zeller:hatching_chick:`);
