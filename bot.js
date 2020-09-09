@@ -63,10 +63,19 @@ client.on('message', async message => {
 		//format_str = 'YYYY-MM-DD hh:mm:ss';
 		//format_str = format_str.replace(/YYYY/g, year_str);
 		
+		// http://cya.sakura.ne.jp/js/regexp.htm
 		result = reply_text.match( /(.*)\/(.*)\/(.*)/ );//「/」区切りの数字を取り出す result[0]は全ての文字列
+		let year 	= result[1];
+		let month 	= result[2];
+		let date 	= result[3];
+		if(month == 1 || month == 2 ){
+			year --;
+			month +=12;
+		}
 
 		//メンションせず
-		message.channel.send(`${author}ちゃん、${result[1]} ${result[3]} ${result[2]} Zeller:hatching_chick:`);
+		message.channel.send(`${author}ちゃん、${result[1]}/${result[2]}/${result[3]} Zeller:hatching_chick:`);
+		message.channel.send(`${author}ちゃん、${year}/${month}/${date} Zeller:hatching_chick:`);
     }
 
     
