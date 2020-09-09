@@ -54,22 +54,14 @@ client.on('message', async message => {
         */
     }
 	
-	// ツェラーの公式 [Zeller]
-	/*
-	年 + 年/4 - 年/100 + 年/400 + (13*月+8)/5 + 日 を7で割ったときのあまりが、
-	0ならば日曜、1ならば月曜、・・・、6ならば土曜。
-	ただし、1月、2月は前年の13月、14月として計算する。
-	//String[] dayString = { "日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日" };dayOfTheWeek[7]
-	1582/10/15(金)以降に対応
+	/* ツェラーの公式 [Zeller]
+	年 + 年/4 - 年/100 + 年/400 + (13*月+8)/5 + 日 を7で割ったときの余り = [0-6]
+	ただし、1月、2月は前年の13月、14月として計算
+	1582/10/15(金)以降に対応。閏年対応。
 	*/
-	if (message.content.match(/^[0-9]{4}\/[0-9]{2}\/[0-9]{2}$/)) {//[yyyy/mm/dd]にマッチ
-		//メッセージを送るチャンネルを判断します
-		let channel = message.channel;
-		let author = message.author.username;
-		var reply_text = message.content;
-		
-		// http://cya.sakura.ne.jp/js/regexp.htm
-		result = reply_text.match( /(.*)\/(.*)\/(.*)/ );//「/」区切りの数字を取り出す result[0]は全ての文字列
+	if (message.content.match(/^[0-9]{4}\/[0-9]{2}\/[0-9]{2}$/)) {// [yyyy/mm/dd]にマッチ
+
+		result = reply_text.match( /(.*)\/(.*)\/(.*)/ );//「/」区切りの文字列を取り出す result[0]は全ての文字列
 		let year 	= Number(result[1]);
 		let month 	= Number(result[2]);
 		let date 	= Number(result[3]);
@@ -78,11 +70,12 @@ client.on('message', async message => {
 			month +=12;
 		}
 		
-		//$day = ($year + $year / 4 - $year / 100 + $year / 400 + (13 * $month + 8)/ 5 + $date) % 7;
 		let day = Math.floor( year + Math.floor(year/4) - Math.floor(year/100) + Math.floor(year/400) + Math.floor((13 * month + 8)/5) + date ) % 7;
 		
 		var dayOfTheWeek = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"];
 
+		//メッセージを送るチャンネルを判断
+		let channel = message.channel;
 		//メンションせず
 		message.channel.send(`${result[1]}/${result[2]}/${result[3]} は ${dayOfTheWeek[day]}:turtle:`);
     }
