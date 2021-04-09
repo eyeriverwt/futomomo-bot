@@ -91,7 +91,7 @@ client.on('message', async message => {
 		//curl "https://api.openweathermap.org/data/2.5/onecall?lat=35.681236&lon=139.767125&units=metric&lang=ja&appid={YOUR API KEY}"
 		
 		//メンションせず
-		message.channel.send(`わかんないです。。`);
+		message.channel.send(`2020年7月31日（金）14:00 をもちまして、「livedoor 天気API」のサービス提供を終了`);
 		/*
 		https.get(URL, function(res) {
 			var body = '';
