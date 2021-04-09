@@ -60,7 +60,11 @@ client.on('message', async message => {
 	1582/10/15(金)以降に対応。閏年対応。
 	*/
 	if (message.content.match(/^[0-9]{4}\/[0-9]{2}\/[0-9]{2}$/)) {// [yyyy/mm/dd]にマッチ
-		message.channel.send(`ツェラーの公式`);
+		message.channel.send(`ツェラーの公式1`);
+
+		let reply_text = message.content;
+		message.channel.send(`ツェラーの公式2`);
+		message.channel.send(reply_text);
 
 		result = reply_text.match( /(.*)\/(.*)\/(.*)/ );//「/」区切りの文字列を取り出す result[0]は全ての文字列
 		let year 	= Number(result[1]);
@@ -70,10 +74,13 @@ client.on('message', async message => {
 			year --;
 			month +=12;
 		}
+		message.channel.send(`ツェラーの公式3`);
 		
 		let day = Math.floor( year + Math.floor(year/4) - Math.floor(year/100) + Math.floor(year/400) + Math.floor((13 * month + 8)/5) + date ) % 7;
 		
 		var dayOfTheWeek = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"];
+
+		message.channel.send(`ツェラーの公式4`);
 
 
 		//メッセージを送るチャンネルを判断
