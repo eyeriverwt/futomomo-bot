@@ -74,6 +74,8 @@ client.on('message', async message => {
 		
 		var dayOfTheWeek = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"];
 
+		message.channel.send(`ツェラーの公式`);
+
 		//メッセージを送るチャンネルを判断
 		let channel = message.channel;
 		//メンションせず
@@ -91,7 +93,7 @@ client.on('message', async message => {
 		//curl "https://api.openweathermap.org/data/2.5/onecall?lat=35.681236&lon=139.767125&units=metric&lang=ja&appid={YOUR API KEY}"
 		
 		//メンションせず
-		message.channel.send(`2020年7月31日（金）14:00 をもちまして、「livedoor 天気API」のサービス提供を終了`);
+		message.channel.send(`2020年7月31日（金）14:00 をもちまして、「livedoor 天気API」のサービス提供を終了しました。。ごめんぽ`);
 		/*
 		https.get(URL, function(res) {
 			var body = '';
